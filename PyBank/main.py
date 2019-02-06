@@ -17,18 +17,12 @@ with open(csvpath, newline='') as csvfile:
     total = 0
     delta = 0
     totaldelta = 0
-    lastrow = None 
     for x, y in csvreader:
         monthcount += 1
 
         total += int(y)
 
-        lastrow = (x, y)
-
-        if lastrow is not None:
-            delta = int(y) - lastrow[1]
-            totaldelta += delta
-            print(delta)
+       
 
 
             
