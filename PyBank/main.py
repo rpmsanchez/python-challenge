@@ -10,14 +10,43 @@ with open(csvpath, newline='') as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
     
+    #eliminate header
     csv_header = next(csvfile)
-    print(f"Header: {csv_header}")
 
     monthcount = 0
-    for row in csvreader:
-        monthcount = monthcount + 1
+    total = 0
+    delta = 0
+    totaldelta = 0
+    lastrow = None 
+    for x, y in csvreader:
+        monthcount += 1
+
+        total += int(y)
+
+        lastrow = (x, y)
+
+        if lastrow is not None:
+            delta = int(y) - lastrow[1]
+            totaldelta += delta
+            print(delta)
+
+
+            
+        #if int(y) != int(next_y):
+         #   delta = int(next_y) - int(y)
+          #  totaldelta += delta                
+           # print(str(delta))
+        
+            
+    
         
     print("Total Months: " + str(monthcount))
+    print("Total:" + str(total))
+    print(totaldelta)
+
+
+
+
 
 
         
